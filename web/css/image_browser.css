@@ -134,6 +134,7 @@ body{
     white-space: nowrap;
     margin:3px 6px 3px 6px;
     font-family: 'fridge', sans-serif;
+    display: block;
 
 }
 
@@ -176,6 +177,12 @@ a:active {
 
 .filter {
     display:block;
-    width:500px;
+    width:200px;
     margin:25px auto 5px auto;
+}
+
+.fridgeHeader{
+    font-size: 32px;
+    text-shadow: 4px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+
 }

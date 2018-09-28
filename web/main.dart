@@ -1,6 +1,7 @@
 import "dart:async";
 import "dart:html";
 
+import 'package:CommonLib/Random.dart';
 import 'package:CommonLib/Utility.dart';
 
 //############################################################################################
@@ -72,8 +73,10 @@ void main() {
   setTitle(title.isEmpty ? "Select a category:" : title.join(" +<br/>"));
 
   Element links = querySelector("#links");
+  links.append(new DivElement()..classes.add("fridgeHeader")..setInnerHtml(rainbowifyMe("FARRAGO FICTION FANART FRIDGE"),treeSanitizer: NodeTreeSanitizer.trusted,validator: new NodeValidatorBuilder()..allowElement("span")));
   for (ArtCategory cat in categores) {
-    links.append(new AnchorElement(href:"?${cat.tag}=true")..setInnerHtml(cat.name));
+
+    links.append(new AnchorElement(href:"?${cat.tag}=true")..setInnerHtml(rainbowifyMe(cat.name),treeSanitizer: NodeTreeSanitizer.trusted,validator: new NodeValidatorBuilder()..allowElement("span")));
   }
 
   links.append(Search.createListSearchBox(() => imageTiles, (Set<Element> s) {
@@ -87,6 +90,17 @@ void main() {
   }, mapping: (Element e) => e.dataset["name"],
       emptyCaption: "Filter..."
   )..className="filter");
+}
+
+String rainbowifyMe(String text) {
+  String ret = "";
+  List<String> colors = <String>["#00ff00","#ff0000","#0000ff","#ff00ff","#ffff00","#00ffff"];
+  Random rand = new Random();
+  for(int i = 0; i< text.length; i++) {
+    ret = "$ret<span style='color:${rand.pickFrom(colors)}'>${new String.fromCharCode(text.codeUnitAt(i))}</span>";
+  }
+
+  return ret;
 }
 
 String adjustURL(String url) {
