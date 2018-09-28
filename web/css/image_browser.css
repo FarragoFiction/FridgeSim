@@ -22,6 +22,7 @@
 #header{
 	font-size: 25px;
 	font-weight: bold;
+	margin-left: -25px;
 }
 
 .spriteImgNoLayers{
@@ -56,12 +57,38 @@ body{
 	color: #ffffff;
 }
 
+.fridgeInside{
+	background-color: #aaaaaa;
+	border-radius: 15px;
+	padding: 100px;
+	padding-top: 50px;
+}
+
+
+.fanLinks{
+	background-color: #888888;
+    font-family: 'fridge', sans-serif;
+	border-radius: 15px;
+	z-index: 13;
+	padding-top: 100px;
+	padding-bottom: 100px;
+	color: #cc87e8;
+	width:300px;
+	height: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	border: 1px solid black;
+	text-align: center;
+	vertical-align: top;
+	font-size: 25px;
+}
+
+
 .image {
     position:relative;
     max-height:194px;
     max-width:594px;
     vertical-align:middle;
-
     top:50%;
     transform:translate(0,-50%)
 }
@@ -73,11 +100,10 @@ body{
     position:relative;
 
     border:1px solid black;
-    margin:2px;
+    margin:20px;
 }
 
 #images {
-	text-align:center;
 }
 
 .imagename, .imagename_always {
