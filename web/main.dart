@@ -94,10 +94,11 @@ void main() {
 
 String rainbowifyMe(String text) {
   String ret = "";
-  List<String> colors = <String>["#00ff00","#ff0000","#0000ff","#ff00ff","#ffff00","#00ffff"];
-  Random rand = new Random();
+  List<String> colors = <String>["#d12136","#69ac39","#d2d73c","#019ee1","#6c33a4","#ff8d34"];
   for(int i = 0; i< text.length; i++) {
-    ret = "$ret<span style='color:${rand.pickFrom(colors)}'>${new String.fromCharCode(text.codeUnitAt(i))}</span>";
+
+    int charCode = text.codeUnitAt(i);
+    ret = "$ret<span style='color:${colors[charCode%(colors.length-1)]}'>${new String.fromCharCode(charCode)}</span>";
   }
 
   return ret;
