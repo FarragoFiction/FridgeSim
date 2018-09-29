@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7a2aab58-da84-476b-8036-641a27fe7881" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/css/image_browser.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/css/image_browser.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/web/main.dart" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -26,8 +28,8 @@
       <file leaf-file-name="main.dart" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/main.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="100" column="51" selection-start-line="100" selection-start-column="51" selection-end-line="100" selection-end-column="51" />
+            <state relative-caret-position="155">
+              <caret line="78" column="88" selection-start-line="78" selection-start-column="88" selection-end-line="78" selection-end-column="88" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
                 <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
@@ -48,8 +50,8 @@
       <file leaf-file-name="image_browser.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/css/image_browser.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="185" column="18" selection-start-line="185" selection-start-column="18" selection-end-line="185" selection-end-column="18" />
+            <state relative-caret-position="408">
+              <caret line="90" column="16" selection-start-line="90" selection-start-column="1" selection-end-line="90" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -57,8 +59,8 @@
       <file leaf-file-name="ocgen.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/css/ocgen.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+            <state relative-caret-position="272">
+              <caret line="16" column="5" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -73,8 +75,11 @@
       <find>fan</find>
       <find>fanli</find>
       <find>#links</find>
-      <find>rainbow</find>
       <find>filter</find>
+      <find>rainbow</find>
+      <find>shadow</find>
+      <find>fridge</find>
+      <find>font-fm</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -136,6 +141,13 @@
               <item name="web" type="462c0819:PsiDirectoryNode" />
               <item name="Fonts" type="462c0819:PsiDirectoryNode" />
               <item name="alpha_fridge_magnets" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FridgeSim" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FridgeSim" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="Fonts" type="462c0819:PsiDirectoryNode" />
+              <item name="andada" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -247,13 +259,6 @@
     <entry file="file://$PROJECT_DIR$/web/css/oc.css">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/css/ocgen.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/css/navbar.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
@@ -268,17 +273,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/web/css/ocgen.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="5" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/web/css/image_browser.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="185" column="18" selection-start-line="185" selection-start-column="18" selection-end-line="185" selection-end-column="18" />
+        <state relative-caret-position="408">
+          <caret line="90" column="16" selection-start-line="90" selection-start-column="1" selection-end-line="90" selection-end-column="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/main.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="100" column="51" selection-start-line="100" selection-start-column="51" selection-end-line="100" selection-end-column="51" />
+        <state relative-caret-position="155">
+          <caret line="78" column="88" selection-start-line="78" selection-start-column="88" selection-end-line="78" selection-end-column="88" />
           <folding>
             <element signature="e#0#20#0" expanded="true" />
             <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />

@@ -76,7 +76,7 @@ void main() {
   links.append(new DivElement()..classes.add("fridgeHeader")..setInnerHtml(rainbowifyMe("FARRAGO FICTION FANART FRIDGE"),treeSanitizer: NodeTreeSanitizer.trusted,validator: new NodeValidatorBuilder()..allowElement("span")));
   for (ArtCategory cat in categores) {
 
-    links.append(new AnchorElement(href:"?${cat.tag}=true")..setInnerHtml(rainbowifyMe(cat.name),treeSanitizer: NodeTreeSanitizer.trusted,validator: new NodeValidatorBuilder()..allowElement("span")));
+    links.append(new AnchorElement(href:"?${cat.tag}=true")..setInnerHtml(fridgePoetryMe(cat.name),treeSanitizer: NodeTreeSanitizer.trusted,validator: new NodeValidatorBuilder()..allowElement("span")));
   }
 
   links.append(Search.createListSearchBox(() => imageTiles, (Set<Element> s) {
@@ -101,6 +101,16 @@ String rainbowifyMe(String text) {
     ret = "$ret<span style='color:${colors[charCode%(colors.length-1)]}'>${new String.fromCharCode(charCode)}</span>";
   }
 
+  return ret;
+}
+
+String fridgePoetryMe(String text) {
+  //fridgePoetryBox
+  String ret = "";
+  List<String> parts = text.split(" ");
+  for(String part in parts) {
+    ret = "$ret<span class='fridgePoetryBox''>$part}</span>";
+  }
   return ret;
 }
 
