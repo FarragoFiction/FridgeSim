@@ -75,7 +75,7 @@ body{
     font-family: 'fridge', sans-serif;
 	border-radius: 15px;
 	z-index: 13;
-	padding-top: 100px;
+	padding-top: 50px;
 	padding-bottom: 100px;
 	color: #cc87e8;
 	width:300px;
@@ -93,6 +93,7 @@ body{
     background-color: white;
     padding: 3px;
     margin-left: 5px;
+    font-family: 'fridgePoetry',serif;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
 }
@@ -147,7 +148,6 @@ body{
     display:inline-block;
     white-space: nowrap;
     margin:3px 6px 3px 6px;
-    font-family: 'fridgePoetry',serif;
     display: block;
     padding: 5px;
 
@@ -200,6 +200,11 @@ a:active {
 .fridgeHeader{
     font-size: 32px;
     text-shadow: 3px 0 0 #000, 0 -2px 0 #000, 0 1px 0 #000, -2px 0 0 #000;
+    width: 250px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+
 
 
 }

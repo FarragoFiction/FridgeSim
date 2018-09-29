@@ -9,8 +9,6 @@ import 'package:CommonLib/Utility.dart';
 //############################################################################################
 
 List<ArtCategory> categores = <ArtCategory>[
-  new ArtCategory("Hair",                     "Hair Gallery", "hair",     action: drawHair),
-  new ArtCategory("Horns",                    "Horn Gallery", "horns",    action: drawHorns),
   new ArtCategory("All Fanart",               "All Fanart",   "fanArt",   action: drawAllFanArt),
   new ArtCategory("First Player",             "First Player Post Great Refactoring",  "firstPlayer",      url: "/FanArt/FirstPlayer/"),
   new ArtCategory("GrimDark AB FanArt",       "GrimDark AB Gallery",                  "grimAB",           url: "/FanArt/ABFanArt/"),
@@ -18,10 +16,14 @@ List<ArtCategory> categores = <ArtCategory>[
   new ArtCategory("Wranglers",              "Wranglers",                    "Wranglers",             url: "/FanArt/Wranglers/"),
   new ArtCategory("Misc FanArt",              "Miscellaneous Art",                    "misc",             url: "/FanArt/miscFanArt/"),
   new ArtCategory("LOHAE FanArt",              "LOHAE Art",                    "LOHAE",             url: "/FanArt/LOHAE/"),
+  new ArtCategory("Manic LOHAE Contest",              "Manic LOHAE Contest",                    "Manic Contest",             url: "/FanArt/ManicLOHAEContest/"),
+
   new ArtCategory("WigglerSim FanArt",              "WigglerSim Art",                    "WigglerSim",             url: "/FanArt/WigglerSim/"),
   new ArtCategory("Gif FanArt",               "Gif Gallery",                          "gifs",             url: "/FanArt/gifs/"),
   new ArtCategory("Octobermas FanArt",        "Octobermas!",                          "octobermas",       url: "/FanArt/OctoberMas/"),
   new ArtCategory("ShogunSim FanArt",         "ShogunSim Gallery",                    "shogunsim",        url: "/FanArt/ShogunSim/"),
+  new ArtCategory("Shogun Day 2018",         "Shogun Day 2018",                    "ShogunDay2018",        url: "/FanArt/ShogunDay2018/"),
+
   new ArtCategory("Shogun vs JR",             "Shogun vs JR: <a href = 'https://drive.google.com/drive/folders/1dUSRkaW4zZD6r21gywPvR_YHcL7gvzUn?usp=sharing'>https://drive.google.com/drive/folders/1dUSRkaW4zZD6r21gywPvR_YHcL7gvzUn?usp=sharing PUT YOUR NAME IN THE FILE NAME SO WE KNOW WHO MADE IT</a>", "mascotCompetition",    url: "/FanArt/MascotCompetition/"),
   new ArtCategory("oblivionSurfer's FanArt",  "oblivionSurfer's FanArt Gallery",      "oblivionSurfer",   url: "/FanArt/oblivionSurfer/"),
 ];
@@ -57,9 +59,11 @@ class ArtCategory {
 
 void main() {
 
+  print("loading fridge");
   List<String> title = <String>[];
 
   for (ArtCategory cat in categores) {
+    print("processing category ${cat.name}");
     if (Uri.base.queryParameters.containsKey(cat.tag) && Uri.base.queryParameters[cat.tag].toLowerCase() == "true") {
       if (cat.action != null) {
         cat.action();
@@ -70,10 +74,16 @@ void main() {
     }
   }
 
+  print("trying to set title");
   setTitle(title.isEmpty ? "Select a category:" : title.join(" +<br/>"));
 
   Element links = querySelector("#links");
-  links.append(new DivElement()..classes.add("fridgeHeader")..setInnerHtml(rainbowifyMe("FARRAGO FICTION FANART FRIDGE"),treeSanitizer: NodeTreeSanitizer.trusted,validator: new NodeValidatorBuilder()..allowElement("span")));
+  DivElement header = new DivElement()..classes.add("fridgeHeader")..setInnerHtml(rainbowifyMe("FARRAGO FICTION FANART FRIDGE"),treeSanitizer: NodeTreeSanitizer.trusted,validator: new NodeValidatorBuilder()..allowElement("span"));
+  links.append(header);
+  header.onClick.listen((Event e)
+  {
+    window.location.href = "www.farragofiction.com";
+  });
   for (ArtCategory cat in categores) {
 
     links.append(new AnchorElement(href:"?${cat.tag}=true")..setInnerHtml(fridgePoetryMe(cat.name),treeSanitizer: NodeTreeSanitizer.trusted,validator: new NodeValidatorBuilder()..allowElement("span")));
