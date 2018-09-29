@@ -72,7 +72,7 @@ body{
 
 .fanLinks{
 	background-color: #888888;
-    font-family: 'fridgePoetry', sans-serif;
+    font-family: 'fridge', sans-serif;
 	border-radius: 15px;
 	z-index: 13;
 	padding-top: 100px;
@@ -91,7 +91,10 @@ body{
 .fridgePoetryBox{
     border: 1px solid black;
     background-color: white;
-    padding: 1px;
+    padding: 3px;
+    margin-left: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
 }
 
 
@@ -144,8 +147,9 @@ body{
     display:inline-block;
     white-space: nowrap;
     margin:3px 6px 3px 6px;
-    font-family: 'fridge', sans-serif;
+    font-family: 'fridgePoetry',serif;
     display: block;
+    padding: 5px;
 
 }
 
@@ -158,25 +162,26 @@ body{
 
 /* unvisited link */
 a:link {
-    color: #01a5b2;
+    color: #000000;
     text-decoration: none;
 }
 
 /* visited link */
 a:visited {
-    color: #01a5b2;
+    color: #000000;
     text-decoration: none;
 }
 
 /* mouse over link */
 a:hover {
-    color: #01a5b2;
+    color: #000000;
     text-decoration: underline;
 }
 
 /* selected link */
 a:active {
-    color: #01a5b2;
+    color: #000000;
+    background-color: yellow;
     text-decoration: none;
 }
 

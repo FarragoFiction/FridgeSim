@@ -109,7 +109,7 @@ String fridgePoetryMe(String text) {
   String ret = "";
   List<String> parts = text.split(" ");
   for(String part in parts) {
-    ret = "$ret<span class='fridgePoetryBox''>$part}</span>";
+    ret = "$ret<span class='fridgePoetryBox''>$part</span>";
   }
   return ret;
 }
