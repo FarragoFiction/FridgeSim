@@ -15,12 +15,15 @@ List<ArtCategory> categores = <ArtCategory>[
   new ArtCategory("star.eyes' Memes FanArt",  "star.eyes' memes",                     "stareyes",         url: "/FanArt/star.eyes/"),
   new ArtCategory("Wranglers",              "Wranglers",                    "Wranglers",             url: "/FanArt/Wranglers/"),
   new ArtCategory("Misc FanArt",              "Miscellaneous Art",                    "misc",             url: "/FanArt/miscFanArt/"),
+  new ArtCategory("Misc Meme Art",              "Miscellaneous Meme Art",                    "miscmeme",             url: "/FanArt/MiscMemes/"),
+  new ArtCategory("JR Misc FanArt",              "JR Miscellaneous Art",                    "jrmisc",             url: "/FanArt/JRMiscArt/"),
   new ArtCategory("LOHAE FanArt",              "LOHAE Art",                    "LOHAE",             url: "/FanArt/LOHAE/"),
   new ArtCategory("Manic LOHAE Contest",              "Manic LOHAE Contest",                    "Manic Contest",             url: "/FanArt/ManicLOHAEContest/"),
 
   new ArtCategory("WigglerSim FanArt",              "WigglerSim Art",                    "WigglerSim",             url: "/FanArt/WigglerSim/"),
   new ArtCategory("Gif FanArt",               "Gif Gallery",                          "gifs",             url: "/FanArt/gifs/"),
   new ArtCategory("Octobermas FanArt",        "Octobermas!",                          "octobermas",       url: "/FanArt/OctoberMas/"),
+  new ArtCategory("Art By Shogun",         "Art By Shogun",                    "Art By Shogun",        url: "/FanArt/ArtByShogun/"),
   new ArtCategory("ShogunSim FanArt",         "ShogunSim Gallery",                    "shogunsim",        url: "/FanArt/ShogunSim/"),
   new ArtCategory("Shogun Day 2018",         "Shogun Day 2018",                    "ShogunDay2018",        url: "/FanArt/ShogunDay2018/"),
 
@@ -57,8 +60,12 @@ class ArtCategory {
   ArtCategory(String this.name, String this.title, String this.tag, {String this.url = null, Action this.action = null});
 }
 
-void main() {
+Future<Null> main() async{
+    //if i don't do this shit fucks up and it can't find the divs and i don't know why anymore but whatever.
+    //i remember this used to happen to early sburbsim days but why is it happening NOW?
+    await new Future.delayed(const Duration(milliseconds: 10));
 
+    print("its main");
   print("loading fridge");
   List<String> title = <String>[];
 
@@ -74,18 +81,22 @@ void main() {
     }
   }
 
-  print("trying to set title");
-  setTitle(title.isEmpty ? "Select a category:" : title.join(" +<br/>"));
-
+  print("trying to set title, title is $title");
+  //setTitle(title.isEmpty ? "Select a category:" : title.join(" +<br/>"));
+  print("set title somehow");
   Element links = querySelector("#links");
+  print("links is $links which is ${querySelector("#links")}");
   DivElement header = new DivElement()..classes.add("fridgeHeader")..setInnerHtml(rainbowifyMe("FARRAGO FICTION FANART FRIDGE"),treeSanitizer: NodeTreeSanitizer.trusted,validator: new NodeValidatorBuilder()..allowElement("span"));
+  print("set header");
+
   links.append(header);
   header.onClick.listen((Event e)
   {
     window.location.href = "www.farragofiction.com";
   });
+  print("wired up header");
   for (ArtCategory cat in categores) {
-
+      print("displaying category ${cat.name}");
     links.append(new AnchorElement(href:"?${cat.tag}=true")..setInnerHtml(fridgePoetryMe(cat.name),treeSanitizer: NodeTreeSanitizer.trusted,validator: new NodeValidatorBuilder()..allowElement("span")));
   }
 
@@ -100,6 +111,7 @@ void main() {
   }, mapping: (Element e) => e.dataset["name"],
       emptyCaption: "Filter..."
   )..className="filter");
+  print("done with shit");
 }
 
 String rainbowifyMe(String text) {
