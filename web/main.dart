@@ -60,6 +60,15 @@ class ArtCategory {
   ArtCategory(String this.name, String this.title, String this.tag, {String this.url = null, Action this.action = null});
 }
 
+NodeValidator _validator = new NodeValidatorBuilder()..allowElement("span");
+Element setHtml(Element node, String html) {
+  node.setInnerHtml(html,treeSanitizer: NodeTreeSanitizer.trusted,validator: _validator);
+  return node;
+}
+void appendHtml(Element node, String html) {
+  node.appendHtml(html, treeSanitizer: NodeTreeSanitizer.trusted,validator: _validator);
+}
+
 Future<Null> main() async{
     //if i don't do this shit fucks up and it can't find the divs and i don't know why anymore but whatever.
     //i remember this used to happen to early sburbsim days but why is it happening NOW?
@@ -86,21 +95,19 @@ Future<Null> main() async{
   print("set title somehow");
   Element links = querySelector("#links");
   print("links is $links which is ${querySelector("#links")}");
-  DivElement header = new DivElement()..classes.add("fridgeHeader")..setInnerHtml(rainbowifyMe("FARRAGO FICTION FANART FRIDGE"),treeSanitizer: NodeTreeSanitizer.trusted,validator: new NodeValidatorBuilder()..allowElement("span"));
+  setHtml(querySelector("#title"), rainbowifyMe("FARRAGO FICTION FANART FRIDGE"));
   print("set header");
 
-  links.append(header);
-  header.onClick.listen((Event e)
-  {
-    window.location.href = "www.farragofiction.com";
-  });
   print("wired up header");
   for (ArtCategory cat in categores) {
       print("displaying category ${cat.name}");
-    links.append(new AnchorElement(href:"?${cat.tag}=true")..setInnerHtml(fridgePoetryMe(cat.name),treeSanitizer: NodeTreeSanitizer.trusted,validator: new NodeValidatorBuilder()..allowElement("span")));
+    links.append(setHtml(new AnchorElement(href:"?${cat.tag}=true"), fridgePoetryMe(cat.name)));
   }
 
-  links.append(Search.createListSearchBox(() => imageTiles, (Set<Element> s) {
+  Element header = querySelector("#header");
+  appendHtml(header, fridgePoetryMe("I am looking for :"));
+    header..append(Search.createListSearchBox(() => imageTiles, (Set<Element> s) {
+
     for(Element tile in imageTiles) {
       if (s.contains(tile)) {
         tile.style.display = "inline-block";
@@ -110,7 +117,7 @@ Future<Null> main() async{
     }
   }, mapping: (Element e) => e.dataset["name"],
       emptyCaption: "Filter..."
-  )..className="filter");
+  )..className="filter fridgePoetryBox");
   print("done with shit");
 }
 
@@ -126,12 +133,26 @@ String rainbowifyMe(String text) {
   return ret;
 }
 
+String letterDistribution = "AAAAAAAAABBCCDDDDEEEEEEEEEEEEFFGGGHHIIIIIIIIIJKLLLLMMNNNNNNOOOOOOOOPPQRRRRRRSSSSTTTTTTUUUUVVWWXYYZ";
+String pickALetter(Random rand) {
+  return letterDistribution[rand.nextInt(letterDistribution.length)];
+}
+
 String fridgePoetryMe(String text) {
   //fridgePoetryBox
+  Random rand = new Random(text.hashCode);
+
   String ret = "";
   List<String> parts = text.split(" ");
   for(String part in parts) {
-    ret = "$ret<span class='fridgePoetryBox''>$part</span>";
+    int deviation = 3;
+    if (part.length < 4) {
+      deviation = 7;
+    } else if (part.length < 8) {
+      deviation = 4;
+    }
+
+    ret = "$ret<span class='fridgePoetryBox' style='transform: rotate(${rand.nextInt(deviation*2) - deviation}deg);'>$part</span>";
   }
   return ret;
 }
@@ -169,6 +190,12 @@ void addImageToPage(Element image, String title, bool alwaysShowTitle, {String i
   } else {
     tile..append(new DivElement()..className="imagename"..text = title);
   }
+
+  Random rand = new Random(title.hashCode);
+
+  Element magnet = setHtml(new DivElement()..className="magnet", rainbowifyMe(pickALetter(rand)));
+  tile.append(magnet);
+  tile.style.transform = "rotate(${rand.nextInt(3) - 1}deg)";
 
   imageContainer.append(tile);
   imageTiles.add(tile);

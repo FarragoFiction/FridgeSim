@@ -27,7 +27,7 @@
 #header{
 	font-size: 25px;
 	font-weight: bold;
-	margin-left: -25px;
+	margin: 0 0 30px 0;
 }
 
 .spriteImgNoLayers{
@@ -62,20 +62,31 @@ body{
 	color: #ffffff;
 }
 
+table {
+    width:100%;
+    border-spacing:10px;
+}
+td {
+    background-color:red;
+}
+
 .fridgeInside{
 	background-color: #aaaaaa;
 	border-radius: 15px;
-	padding: 100px;
-	padding-top: 50px;
+	padding: 50px 70px 100px 70px;
+	text-align:center;
+	width:100%;
+	height:100%;
+	box-sizing:border-box;
+	border:1px solid black;
 }
 
 
 .fanLinks{
 	background-color: #888888;
-    font-family: 'fridge', sans-serif;
-	border-radius: 15px;
+    border-radius: 15px;
 	z-index: 13;
-	padding-top: 50px;
+	padding-top: 30px;
 	padding-bottom: 100px;
 	color: #cc87e8;
 	width:300px;
@@ -89,15 +100,24 @@ body{
 }
 
 .fridgePoetryBox{
+    position:relative;
     border: 1px solid black;
     background-color: white;
     padding: 3px;
     margin-left: 5px;
     font-family: 'fridgePoetry',serif;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    display:inline-block;
 
+    transform-origin: 50% 50%;
 }
 
+a:hover span.fridgePoetryBox {
+    top:-2px;
+    /*color: #000080;*/
+
+    box-shadow: 0 6px 6px 0 rgba(0, 0, 0, 0.2), 0 8px 20px 0 rgba(0, 0, 0, 0.19);
+}
 
 .image {
     position:relative;
@@ -109,13 +129,20 @@ body{
 }
 
 .imageTile, .headTile {
+    min-width:50px;
     height:194px;
     display:inline-block;
     vertical-align:top;
     position:relative;
 
     border:1px solid black;
-    margin:20px;
+    margin:30px 10px 10px 10px;
+
+    padding:20px 10px 20px 10px;
+
+    background-color:#FFFFFF;
+    transform-origin: 50% 50%;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 #images {
@@ -126,6 +153,7 @@ body{
     position:absolute;
     display:block;
     top:0;
+    left:0;
     width:100%;
     height:100%;
     padding:4px;
@@ -138,19 +166,45 @@ body{
 
 .imagename {
     opacity:0;
+    top:20px;
 }
 
 .imageTile:hover > .imagename {
     opacity:1;
 }
 
-.fanLinks > a {
-    display:inline-block;
-    white-space: nowrap;
-    margin:3px 6px 3px 6px;
-    display: block;
-    padding: 5px;
+.fridgeHeader, .magnet {
+    text-shadow: -1px 0 0 #000, 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 2px 0 #000, 1px 2px 0 #000, 0 3px 0 #000, 0 3px 3px rgba(0,0,0,0.4);
+    font-family: 'fridge', sans-serif;
+    pointer-events:none;
+    cursor:default;
+}
 
+.fridgeHeader{
+    display:block;
+    font-size: 33px;
+
+    width: 250px;
+    text-align: center;
+    margin:0 auto 30px auto;
+}
+
+.magnet {
+    font-size:45px;
+    position:absolute;
+    text-align:center;
+    top:-35px;
+    left:0px;
+    width:100%;
+    display:block;
+}
+
+#links a {
+    white-space: nowrap;
+    margin:8px 0px 8px 0;
+    display: block;
+    padding: 0 8px 0 0px;
+    box-sizing:border-box;
 }
 
 .head > img {
@@ -175,15 +229,16 @@ a:visited {
 /* mouse over link */
 a:hover {
     color: #000000;
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 /* selected link */
 a:active {
     color: #000000;
-    background-color: yellow;
+    /*background-color: yellow;*/
     text-decoration: none;
 }
+
 
 .headTile {
     width:244px;
@@ -192,19 +247,8 @@ a:active {
 }
 
 .filter {
-    display:block;
-    width:200px;
-    margin:25px auto 5px auto;
+    font-size: 25px;
+    font-weight: bold;
+    transform: rotate(-0.5deg);
 }
 
-.fridgeHeader{
-    font-size: 32px;
-    text-shadow: 3px 0 0 #000, 0 -2px 0 #000, 0 1px 0 #000, -2px 0 0 #000;
-    width: 250px;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-
-
-
-}
