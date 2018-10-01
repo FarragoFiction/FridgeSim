@@ -1,6 +1,7 @@
 import "dart:async";
 import "dart:html";
 
+import 'package:CommonLib/Colours.dart';
 import 'package:CommonLib/Random.dart';
 import 'package:CommonLib/Utility.dart';
 
@@ -121,13 +122,27 @@ Future<Null> main() async{
   print("done with shit");
 }
 
+//List<String> letterColours = <String>["#d12136","#69ac39","#d2d73c","#019ee1","#6c33a4","#ff8d34"];
+
+int colourCount = 18;
+List<String> letterColours = new List<String>.generate(colourCount, (int i) => new Colour.hsv((1.0 / colourCount) * i, 1.0, 1.0).toStyleString());
+Map<int, int> letterColourIDs = <int,int>{};
+
 String rainbowifyMe(String text) {
   String ret = "";
-  List<String> colors = <String>["#d12136","#69ac39","#d2d73c","#019ee1","#6c33a4","#ff8d34"];
+
   for(int i = 0; i< text.length; i++) {
 
     int charCode = text.codeUnitAt(i);
-    ret = "$ret<span style='color:${colors[charCode%(colors.length-1)]}'>${new String.fromCharCode(charCode)}</span>";
+
+    if (!letterColourIDs.containsKey(charCode)) {
+      letterColourIDs[charCode] = new Random(charCode).nextInt(letterColours.length);
+    }
+
+    int id = letterColourIDs[charCode];
+
+    ret = "$ret<span style='color:${letterColours[id]}'>${new String.fromCharCode(charCode)}</span>";
+    //ret = "$ret<span style='color:${letterColours[charCode%(letterColours.length-1)]}'>${new String.fromCharCode(charCode)}</span>";
   }
 
   return ret;
